@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% if object %}
+        <h1>Edit {{ object.name }}</h1>
+    {% else %}
+        <h1>Add a new Finch</h1>
+    {% endif %}
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Am I dreaming? FINCH ME!" class="btn">
+    </form>
+
+{% endblock content %}

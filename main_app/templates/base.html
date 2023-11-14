@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Finch Collector</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
     <header>
@@ -15,8 +16,9 @@
             <div class="nav-wrapper">
                 <a href="/" class="brand-logo">Finch Collector</a>
                 <ul class="right">
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/finches">See All Finches</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'finch_create' %}">Add a Finch</a></li>
+                    <li><a href="{% url 'index' %}">See All Finches</a></li>
                 </ul>
             </div>
         </nav>
@@ -30,6 +32,5 @@
     <footer class="page-footer">
         <p>Finch Collector 2023</p>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
