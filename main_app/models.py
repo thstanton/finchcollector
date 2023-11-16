@@ -8,12 +8,22 @@ PLACES = (
 )
 
 # Create your models here.
+class Food(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('foods_detail', kwargs={'pk': self.id})
+
 class Finch(models.Model):
     name = models.CharField(max_length=100)
     type = models.CharField(max_length=100)
     appearance = models.TextField(max_length=250)
     seen = models.CharField(max_length=100)
     image = models.URLField(max_length=200)
+    foods = models.ManyToManyField(Food)
 
     def __str__(self):
         return self.name

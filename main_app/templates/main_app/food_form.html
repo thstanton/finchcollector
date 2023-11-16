@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    <h1>What's that? A tasty snack?</h1>
+
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="You don't wanna go and eat a snack like that" class="btn">
+    </form>
+
+{% endblock content %}

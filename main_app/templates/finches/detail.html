@@ -43,6 +43,53 @@
             </form>
         </div>
     </div>
+    <hr>
+    <div class="row">
+        <div class="col s6">
+            <h3>{{ finch.name }}'s Favourite Foods</h3>
+            {% if finch.foods.count %}
+                {% for food in finch.foods.all %}
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">
+                                {{ food.name }}
+                            </span>
+                        </div>
+                        <div class="card-action">
+                            <form action="{% url 'unassoc_food' finch.id food.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn">Remove Food</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h5>No Favourite Foods Yet</h5>
+            {% endif %}
+        </div>
+        <div class="col s6">
+            <h3>Available Foods</h3>
+            {% if foods.count %}
+                {% for food in foods.all %}
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">
+                                {{ food.name }}
+                            </span>
+                        </div>
+                        <div class="card-action">
+                            <form action="{% url 'assoc_food' finch.id food.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn">Add Food</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h5>The Greedy Finch Scoffed The Lot</h5>
+            {% endif %}
+        </div>
+    </div>
     <script>
         const dateEl = document.getElementById('id_date');
         M.Datepicker.init(dateEl, {
